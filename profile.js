@@ -14,7 +14,7 @@ function getProfile(personality, archetype){
     bodyLang:"",
     firstLiner:"",
     music:"",
-    movies:"",
+    movies:{},
     politics:"",
     hobbies:"",
     anecdote:"",
@@ -74,31 +74,41 @@ function getMusic(personality, archetype){
 };
 
 function getMovies(personality, archetype){
-  var movieTrait = movies.archetype[archetype] + " " + movies.personality[personality];
-  return movieTrait;
+  var movieTraits = {list:movies.archetype[archetype],action:movies.personality[personality]};
+  return movieTraits;
 };
 
 function getPolitics(personality, archetype){
   var topic = politics.archetype[archetype];
   var action = politics.personality[personality];
-  var sentence = "The only political issue I’m caught up on right now is " + topic + action;
+  var sentence = "The only political issue I’m caught up on right now is " + topic +" "+ action;
   return sentence;
 };
 
 function getHobbies(){
-  var hobbies =     [
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
+  var hobbies =    [
+                      "Rock Climbing",
+                      "Murder Mystery Novels",
+                      "Ping Pong",
+                      "Watching Videos of Animals Doing Human Stuff",
+                      "Cambodian Soap Operas",
+                      "Skee-Ball",
+                      "Barbecuing Pork Ribs and Pork Chops",
+                      "Offseason Trick-Or-Treating",
+                      "Writing Poetry about Birds",
+                      "Barbecuing Pork Ribs and Pork Chops",
+                      "Offseason Trick-Or-Treating",
+                      "Writing Poetry about Birds",
+                      "Yodeling",
+                      "BMX",
+                      "Growing Bonsai Trees",
+                      "Calligraphy",
+                      "Summoning Ghosts",
+                      "Hot Air Ballooning"
                     ];
-  return hobbies[Math.floor(Math.random() * 10)];
+
+  var hobbiesList = hobbies[Math.floor(Math.random() * 3)] + ", " + hobbies[Math.floor(Math.random() * 3)+3] + ", " + hobbies[Math.floor(Math.random() * 3)+6] + ", " + hobbies[Math.floor(Math.random() * 3)+9] + ", and " + hobbies[Math.floor(Math.random() * 3)+12];
+  return hobbiesList;
 };
 
 function getAnecdote(personality, archetype){
@@ -110,18 +120,29 @@ function getClothes(archetype){
   return clothes[archetype];
 };
 
+
+
+
+
+
+
+
+
+
+
 function getCatchphrase(){
-  var catchphrases =     [
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
+  var catchphrases =
+                    [
+                      "I am all about that!",
+                      "Get a load of this!",
+                      "I dunno, who’s asking?",
+                      "We’re gonna live forever!",
+                      "Hey I’m just here to have a good time.",
+                      "Pay attention, I’m droppin’ knowledge!",
+                      "Who’s ready for a mindgasm?",
+                      "You guys are my best friends.",
+                      "This one goes out to yo momma.",
+                      "Mr. Gorbachev. Turn. Down. For. What.",
                     ];
   return catchphrases[Math.floor(Math.random() * 10)];
 };
@@ -131,19 +152,24 @@ function getDiscussion(archetype){
 };
 
 function getNickname(){
-  var nicknames =     [
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
+  var nicknames =
+                  [
+                      "The Claw",
+                      "Glowstick",
+                      "Tripwire",
+                      "Ass Cooker",
+                      "Milkshake",
+                      "Fruit Loops",
+                      "Crispy",
+                      "Morgan Freeman",
+                      "Snoop Froggy Frog",
+                      "Big Dipper",
+                      "Moustache Magoo",
+                      "Skim Milk",
+                      "Twizzler",
+                      "The Baconator"
                     ];
-  return nicknames[Math.floor(Math.random() * 10)];
+  return nicknames[Math.floor(Math.random() * 14)];
 };
 
 exports.getProfile = getProfile;

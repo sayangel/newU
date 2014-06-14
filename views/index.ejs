@@ -7,26 +7,103 @@
 </head>
 <body>
 
-  <div id="main">
-    <h1>NewU</h1>
+  <!-- Bootstrap core CSS -->
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-    <h1><%= data.personality%> <%= data.archetype%></h1>
-    <p><strong>Body Language: </strong><%= data.bodyLang %></p>
-    <p><strong>First Liner: </strong><%= data.firstLiner %></p>
-    <p><strong>Music: </strong><%= data.music %></p>
-    <p><strong>Movies: </strong><%= data.movies %></p>
-    <p><strong>Politics: </strong><%= data.politics %></p>
-    <p><strong>Hobbies: </strong><%= data.hobbies %></p>
-    <p><strong>Anecdote: </strong><%= data.anecdote %></p>
-    <p><strong>Clothes: </strong><%= data.clothes %></p>
-    <p><strong>Catchphrase: </strong><%= data.catchphrase %></p>
-    <p><strong>Discussion: </strong><%= data.discussion %></p>
-    <p><strong>Nickname: </strong><%= data.nickname %></p>
+  <!-- Custom styles for this template -->
+  <link href="/css/style.css" rel="stylesheet">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">NewU</a>
+        </div>
+        <!--
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>--><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-sm-12">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          <div class="jumbotron">
+            <h1><%= data.personality%> <%= data.archetype%></h1>
+            <p><strong>Nickname: </strong><%= data.nickname %></p>
+            <p><strong>Catchphrase: </strong><%= data.catchphrase %></p>
+            <p><strong>Opening Line: </strong><%= data.firstLiner %></p>
+          </div>
+
+          <div class="row">
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h2>Discussion Starter: </h2>
+              <p><%= data.discussion %></p>
+            </div><!--/span-->
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h2>Key Accessory</h2>
+              <p><%= data.clothes %></p>
+            </div><!--/span-->
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h2>Music</h2>
+              <p><%= data.music %></p>
+            </div><!--/span-->
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h2>Movies/TV</h2>
+              <p><%= data.movies.list %></br></br><%= data.movies.action%></p>
+            </div><!--/span-->
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h2>Politics</h2>
+              <p><%= data.politics %></p>
+            </div><!--/span-->
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h2>Hobbies</h2>
+              <p><%= data.hobbies %></p>
+            </div><!--/span-->
+          </div><!--/row-->
+          <div class="row">
+              <div class="col-6 col-sm-6 col-lg-6">
+                <h2>Body Language</h2>
+                <p><%= data.bodyLang %></p>
+              </div><!--/span-->
+              <div class="col-6 col-sm-6 col-lg-6">
+                <h2>Anecdote</h2>
+                <p><%= data.anecdote %></p>
+              </div><!--/span-->
+          </div>
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>Made with love @ Comedy Hack Day NYC by <a href="http://twitter.com/sayangel">@sayangel</a>, <a href="http://twitter.com/bobvulfov">@bobvulfov</a>, <a href="http://twitter.com">Katie M Simon</a></p>
+      </footer>
+
+    </div><!--/.container-->
 
 
 
-
-  </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>

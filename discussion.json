@@ -1,14 +1,14 @@
 {
-	"hacker":"hacker",
-	"comedian":"comedian",
-	"athlete":"athlete",
-	"musician":"musician",
-	"student":"student",
-	"socialite":"socialite",
-	"bro":"bro",
-	"vegan":"vegan",
-	"brooklynite":"brooklynite",
-	"workaholic":"workaholic",
-	"wizard":"wizard",
-	"dog":"dog"
+	"hacker":"Do you think Edward Snowden is a patriot or a traitor?",
+	"comedian":"Are there some things that should never be joked about?",
+	"athlete":"Should sports be mandatory in all schools?",
+	"musician":"Can a band be considered good even if they have zero fans?",
+	"student":"Should student loans just disappear after a few years?",
+	"socialite":"Why should the richest 1% have to pay increased taxes?",
+	"bro":"What do you think is the quickest way to consume 12 beers?",
+	"vegan":"Should every restaurant offer a vegan or vegetarian option?",
+	"brooklynite":"How do you feel about New York City’s gentrification?",
+	"workaholic":"Do you think the federal government should be able to legally cap the number of hours someone can work?",
+	"wizard":"Can a wizard be late or early if he always arrives precisely when he means to?",
+	"dog":"WOOF WOOF WOOF WOOF WOOF"
 }
