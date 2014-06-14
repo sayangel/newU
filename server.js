@@ -1,7 +1,10 @@
 var express = require('express');
 var twilio = require('twilio');
+var jf = require('jsonfile');
 var traits = require('./profile.js');
 var reddit = require('redwrap');
+
+var file = './data.json';
 
 var app = express();
 app.use(express.logger());
@@ -54,6 +57,24 @@ app.get('/', function(req, res) {
   var profile = traits.getProfile(personalities[num1], archetypes[num2]);
 
   res.render('index.ejs', {data: profile});
+});
+
+app.post('/', function(req, res){
+
+    console.log(request.body.user.phone);
+    console.log(request.body.user.profile);
+
+    var obj = {name: 'JP'};
+
+    jf.readFile(file, function(err, obj) {
+      console.log(obj);
+      name2 = "1234567";
+      obj[name2] = "test";
+      jf.writeFile(file, obj, function(err) {
+        console.log(err);
+      })
+    });
+
 });
 
 app.get('/apitest', function(req, res){
@@ -111,7 +132,7 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
    client.messages.create({
     	to: "3235135285",
     	from: "+19177465463",
-    	body: "thx",
+    	body: "Remember: Don't be afraid to not be yourself!",
     }, function(err, message) {
     	console.log(message.sid);
     });
