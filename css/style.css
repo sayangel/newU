@@ -8,9 +8,46 @@ body {
 }
 body {
   padding-top: 70px;
+  background-color: #e8f5fe; 
+
 }
 footer {
-  padding: 30px 0;
+  padding: 50px 0;
+}
+
+.jumbotron {
+  color: black;
+  background-color: #54b4f9;
+
+}
+
+.jumbotron strong {
+  color: black;
+}
+
+/*
+green #65E665
+  background-color: #eee
+9fd5fb
+
+.jumbotron p {
+  color: #0769ae;
+}
+*/
+
+#traits .col-6 p {
+  position:relative;
+  left: 15px;
+  width: 90%;
+}
+
+#traits p {
+    color: black;
+    font: lucida;
+    border: 1px solid #54b4f9;
+    border-radius: 7px;
+    padding:6px;
+    background:#54b4f9;
 }
 
 input.hidden { display: none; }
