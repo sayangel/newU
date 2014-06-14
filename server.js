@@ -125,70 +125,87 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
  jf.readFile(file, function(err, obj) {
    user = obj[incomingNum];
 
-    if(user){
+    if( receivedTxt == "joke"){
+     reddit.r('jokes', function(err, data, res){
 
-      if( receivedTxt == "joke"){
-       reddit.r('jokes', function(err, data, res){
+      var post = Math.floor(Math.random() * 5);
+      var joke = data.data.children[post].data.title + "\n" + data.data.children[post].data.selftext;
 
-        var post = Math.floor(Math.random() * 5);
-        var joke = data.data.children[post].data.title + "\n" + data.data.children[post].data.selftext;
+      messageTxt = "This one will knock 'em dead: \n\n" + joke;
+      console.log(messageTxt);
 
-        messageTxt = "This one will knock 'em dead: \n\n" + joke;
-        console.log(messageTxt);
+      client.messages.create({
+        to: req.body.From,
+        from: "+19177465463",
+        body: messageTxt,
+        }, function(err, message) {
+          if(!err){
+            console.log(message.sid);
+          }
+          else{
+            console.log(err);
+          }
+      });
 
-       });
+     });
 
-      }
-      else if(receivedTxt == "who am i?" || receivedTxt == "who am i"){
-        messageTxt = "Remember, " + user.nickname + ", don't be afraid to not be yourself! You are a "+ user.personality + " " + user.archetype + "\n\nOpen with: \n\n" + user.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + user.discussion + "\n\nWe're here to help if you need anything else!"
-      }
-      else if(receivedTxt == "body language" || receivedTxt == "bodylanguage" || receivedTxt == "body"){
-       messageTxt = "You are your body...\n\n" + user.bodyLang;
-      }
-      else if(receivedTxt == "open" || receivedTxt == "opening line" || receivedTxt == "opener"){
-       messageTxt = "Hit 'em with this...\n\n" + user.firstLiner;
-      }
-      else if(receivedTxt == "about" || receivedTxt == "about me"){
-       messageTxt = "Turn down for this...\n\n" + user.music;
-      }
-      else if(receivedTxt == "movie" || receivedTxt == "movies"){
-       messageTxt = "Hit 'em with this...\n\n" + user.movies.list + "\n\n" + user.movies.action;
-      }
-      else if(receivedTxt == "politics"){
-       messageTxt = "Talking about politics? Say this...\n\n" + user.politics;
-      }
-      else if(receivedTxt == "hobbies"){
-       messageTxt = "Here's what you do for 'fun'...\n\n" + user.hobbies;
-      }
-      else if(receivedTxt == "anecdote"){
-       messageTxt = "Story time, baby...\n\n" + user.anecdote;
-      }
-      else if(receivedTxt == "clothes"){
-       messageTxt = "Dress for success...\n\n" + user.clothes;
-      }
-      else if(receivedTxt == "discussion" ){
-       messageTxt = "Forgot what to say? Let me refresh your memory...\n\n" + user.discussion;
-      }
-      else{
-        	messageTxt = "Remember: Don't be afraid to not be yourself!";
-      }
-    }
-    else{
-      messageTxt = "Who are you?";
     }
 
-    client.messages.create({
-      to: req.body.From,
-      from: "+19177465463",
-      body: messageTxt,
-      }, function(err, message) {
-        if(!err){
-          console.log(message.sid);
+    else
+    {
+      if(user){
+
+        if(receivedTxt == "who am i?" || receivedTxt == "who am i"){
+          messageTxt = "Remember, " + user.nickname + ", don't be afraid to not be yourself! You are a "+ user.personality + " " + user.archetype + "\n\nOpen with: \n\n" + user.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + user.discussion + "\n\nWe're here to help if you need anything else!\n\nIf you need help reply with any of these key phrases: who am i?, body language, opening line, about, movies, politics, hobbies, anecdote, hobbies, anecdote, accessories, discussion"
+        }
+        else if(receivedTxt == "body language" || receivedTxt == "bodylanguage" || receivedTxt == "body"){
+         messageTxt = "You are your body...\n\n" + user.bodyLang;
+        }
+        else if(receivedTxt == "open" || receivedTxt == "opening line" || receivedTxt == "opener"){
+         messageTxt = "Hit 'em with this...\n\n" + user.firstLiner;
+        }
+        else if(receivedTxt == "about" || receivedTxt == "about me"){
+         messageTxt = "This will get their attention...\n\n" + user.music;
+        }
+        else if(receivedTxt == "movie" || receivedTxt == "movies"){
+         messageTxt = "Hit 'em with this...\n\n" + user.movies.list + "\n\n" + user.movies.action;
+        }
+        else if(receivedTxt == "politics"){
+         messageTxt = "Talking about politics? Say this...\n\n" + user.politics;
+        }
+        else if(receivedTxt == "hobbies"){
+         messageTxt = "Here's what you do for 'fun'...\n\n" + user.hobbies;
+        }
+        else if(receivedTxt == "anecdote"){
+         messageTxt = "Story time, baby...\n\n" + user.anecdote;
+        }
+        else if(receivedTxt == "accessories"){
+         messageTxt = "Dress for success...\n\n" + user.clothes;
+        }
+        else if(receivedTxt == "discussion" ){
+         messageTxt = "Forgot what to say? Let me refresh your memory...\n\n" + user.discussion;
         }
         else{
-          console.log(err);
+          	messageTxt = "Remember: Don't be afraid to not be yourself!\n\nIf you need help reply with any of these key phrases: who am i?, body language, opening line, about, movies, politics, hobbies, anecdote, hobbies, anecdote, accessories, discussion.";
         }
-    });
+      }
+      else{
+        messageTxt = "Who are you?";
+      }
+
+      client.messages.create({
+        to: req.body.From,
+        from: "+19177465463",
+        body: messageTxt,
+        }, function(err, message) {
+          if(!err){
+            console.log(message.sid);
+          }
+          else{
+            console.log(err);
+          }
+      });
+    };
   });
 
 });
