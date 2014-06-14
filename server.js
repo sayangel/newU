@@ -72,7 +72,7 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
  client.messages.create({
   	to: "3235135285",
   	from: "+19177465463",
-  	body: "hellooooo this is the newU",
+  	body: "thx",
   }, function(err, message) {
   	console.log(message.sid);
   });
