@@ -1,14 +1,14 @@
 {
-	"hacker":"",
-	"comedian":"",
-	"athlete":"",
-	"musician":"",
-	"student":"",
-	"socialite":"",
-	"bro":"",
-	"vegan":"",
-	"brooklynite":"",
-	"workaholic":"",
-	"wizard":"",
-	"dog":""
+	"hacker":"hacker",
+	"comedian":"comedian",
+	"athlete":"athlete",
+	"musician":"musician",
+	"student":"student",
+	"socialite":"socialite",
+	"bro":"bro",
+	"vegan":"vegan",
+	"brooklynite":"brooklynite",
+	"workaholic":"workaholic",
+	"wizard":"wizard",
+	"dog":"dog"
 }

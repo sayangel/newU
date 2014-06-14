@@ -1,4 +1,6 @@
 var bodylang = require('./bodylanguage.json')
+var clothes = require('./clothes.json')
+var discussion = require('./discussion.json')
 
 function getProfile(personality, archetype){
 
@@ -53,7 +55,9 @@ function getClothes(archetype){
 
 function getCatchphrase(){};
 
-function getDiscussion(archetype){};
+function getDiscussion(archetype){
+  return discussion[archetype];
+};
 
 function getNickname(){};
 
