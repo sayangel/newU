@@ -27,9 +27,34 @@ function getProfile(personality, archetype){
   return profile;
 };
 
+
 function getBodyLang(personality)
 {
   return bodylang[personality];
 };
+
+function getFirstLiner(){};
+
+function getMusic(personality, archetype){};
+
+function getMovies(personality, archetype){};
+
+function getPolitics(personality, archetype){
+  var part1 = politics.personality[personality];
+};
+
+function getHobbies(){};
+
+function getAnecdote(personality, archetype){};
+
+function getClothes(archetype){};
+
+function getCatchphrase(){};
+
+function getDiscussion(archetype){};
+
+function getNickname(){}''
+
+
 
 exports.getProfile = getProfile;
