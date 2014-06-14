@@ -1,4 +1,5 @@
 var express = require('express');
+var mongoose = require('mongoose');
 
 var app = express();
 app.use(express.logger());
@@ -10,7 +11,7 @@ var server = require('http').Server(app);
 
 app.get('/', function(req, res) {
   //res.render('index.ejs');
-  res.send('Starting...')
+  res.send('Bob is writing content...')
 });
 
 app.use(function(req, res, next){
