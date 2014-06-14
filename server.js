@@ -129,7 +129,7 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
      console.log(messageTxt);
 
      client.messages.create({
-     to: "3235135285",
+     to: req.body.From,
      from: "+19177465463",
      body: messageTxt,
      }, function(err, message) {
@@ -141,7 +141,7 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
  }
  else{
    client.messages.create({
-    	to: "3235135285",
+    	to: req.body.From,
     	from: "+19177465463",
     	body: "Remember: Don't be afraid to not be yourself!",
     }, function(err, message) {
