@@ -73,7 +73,7 @@ app.post('/', function(req, res){
         if(!err)
         {
           res.send("Thanks for submitting!");
-          var messageTxt = "Remember, " + userTraits.nickname + ", don't be afraid to not be yourself! Open with: \n\n" + userTraits.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + userTraits.discussion + "\n\nWe're here to help if you need anything else!";
+          var messageTxt = "Alright, " + userTraits.nickname + ", don't be afraid to not be yourself! Open with: \n\n" + userTraits.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + userTraits.discussion + "\n\nWe're here to help if you need anything else!";
           console.log(messageTxt);
 
           client.messages.create({
@@ -151,12 +151,94 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
 
     }
 
+    else if( receivedTxt == "help"){
+      var responseNum = Math.floor(Math.random() * 4);
+      if(responseNum == 0){
+        reddit.r('worldnews', function(err, data, res){
+          for(var i = 0; i < 5; i++){
+            if(!data.data.children[i].data.is_self){
+              //console.log(data.data.children[i].data.title); //outputs object representing first page of WTF subreddit
+              topics += data.data.children[i].data.title + "\n\n";
+            }
+          }
+          var messageTxt = "If you don't know what to talk about, here are some topics for discussion: \n\n" + topics;
+
+          client.messages.create({
+          to: req.body.From,
+          from: "+19177465463",
+          body: messageTxt,
+          }, function(err, message) {
+            if(!err){
+              console.log(message.sid);
+            }
+            else{
+              console.log(err);
+            }
+          });
+
+        });
+      }
+      else if(responseNum == 1){
+
+        var messageTxt = "You're fucked.";
+
+        client.messages.create({
+        to: req.body.From,
+        from: "+19177465463",
+        body: messageTxt,
+        }, function(err, message) {
+          if(!err){
+            console.log(message.sid);
+          }
+          else{
+            console.log(err);
+          }
+        });
+
+      }
+      else if(responseNum == 2){
+
+        var messageTxt = "Try again later.";
+
+        client.messages.create({
+        to: req.body.From,
+        from: "+19177465463",
+        body: messageTxt,
+        }, function(err, message) {
+          if(!err){
+            console.log(message.sid);
+          }
+          else{
+            console.log(err);
+          }
+        });
+      }
+      else if(responseNum == 3){
+
+        var messageTxt = "Who is this?";
+
+        client.messages.create({
+        to: req.body.From,
+        from: "+19177465463",
+        body: messageTxt,
+        }, function(err, message) {
+          if(!err){
+            console.log(message.sid);
+          }
+          else{
+            console.log(err);
+          }
+        });
+
+      };
+    }
+
     else
     {
       if(user){
 
         if(receivedTxt == "who am i?" || receivedTxt == "who am i"){
-          messageTxt = "Remember, " + user.nickname + ", don't be afraid to not be yourself! You are a "+ user.personality + " " + user.archetype + "\n\nOpen with: \n\n" + user.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + user.discussion + "\n\nWe're here to help if you need anything else!\n\nIf you need help reply with any of these key phrases: who am i?, body language, opening line, about, movies, politics, hobbies, anecdote, hobbies, anecdote, accessories, discussion"
+          messageTxt = "Remember, " + user.nickname + ", don't be afraid to not be yourself! You are a "+ user.personality + " " + user.archetype + "!\n\nOpen with: \n\n" + user.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + user.discussion + "\n\nWe're here to help if you need anything else!\n\nIf you need help reply with any of these key phrases: who am i?, body language, opening line, about, movies, politics, hobbies, anecdote, hobbies, anecdote, accessories, discussion"
         }
         else if(receivedTxt == "body language" || receivedTxt == "bodylanguage" || receivedTxt == "body"){
          messageTxt = "You are your body...\n\n" + user.bodyLang;
