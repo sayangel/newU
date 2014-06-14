@@ -1,17 +1,17 @@
 {
   "personality":{
-    "confident":"stand up",
-    "shy":"put your hands in your pockets",
-    "sassy":"be saassy",
-    "mysterious":"im mysterious!",
-    "sensitive":"im sensitive!",
-    "artistic":"im artistic!",
-    "neutral":"im neutral.",
-    "optimistic":"im optimistic!",
-    "sarcastic":"im sarcastic",
-    "paranoid":"im paranoid...",
-    "german":"im german.",
-    "dead":"im dead?"
+    "confident":"Describe how you embody the traits of the main characters.",
+    "shy":"Say that you’re sure there are probably better movies and TV shows than the ones you like.",
+    "sassy":"Exclaim that the person you’re talking to best not bring up up any movies or TV shows that you haven’t yet seen. No spoilers, biatch.",
+    "mysterious":"Note that you watch those on silent volume and you instead let the wind whisper its own dialogue. Light a cigarette. Look away.",
+    "sensitive":"Describe just how much each of them makes you cry your eyes out, then start crying.",
+    "artistic":"Act out your favorite moments from these movies and TV shows through modern dance.",
+    "neutral":"Note you just picked four random things and that you have never seen a movie nor a TV show. You usually just watch your blank wall.",
+    "optimistic":"Talk about how you’re sure that your favorite shows will never get cancelled and that all of your favorite movies will get well-received sequels. ",
+    "sarcastic":"Act surprised that the person you’re talking to has listened to your list. “Woooow you must be sooo smart.”",
+    "paranoid":"WHO’S ASKING. TELL NO ONE. FORGET I SAID ANYTHING. ",
+    "german":"Ich mag Filme und Serien",
+    "dead":"(Dead people don’t watch movies or TV shows. Stay silent. You’re dead.)"
   },
   "archetype":{
     "hacker":"House of Cards, Social Network, Hackers, Silicon Valley",

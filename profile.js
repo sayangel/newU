@@ -81,7 +81,7 @@ function getMovies(personality, archetype){
 function getPolitics(personality, archetype){
   var topic = politics.archetype[archetype];
   var action = politics.personality[personality];
-  var sentence = "The only political issue I’m caught up on right now is " + topic + "." + action;
+  var sentence = "The only political issue I’m caught up on right now is " + topic + action;
   return sentence;
 };
 
