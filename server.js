@@ -238,7 +238,7 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
       if(user){
 
         if(receivedTxt == "who am i?" || receivedTxt == "who am i"){
-          messageTxt = "Remember, " + user.nickname + ", don't be afraid to not be yourself! You are a "+ user.personality + " " + user.archetype + "!\n\nOpen with: \n\n" + user.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + user.discussion + "\n\nWe're here to help if you need anything else!\n\nIf you need help reply with any of these key phrases: who am i?, body language, opening line, about, movies, politics, hobbies, anecdote, hobbies, anecdote, accessories, discussion"
+          messageTxt = "Remember, " + user.nickname + ", don't be afraid to not be yourself! You are a "+ user.personality + " " + user.archetype + "!\n\nOpen with: \n\n" + user.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + user.discussion + "\n\nWe're here to help if you need anything else!\n\nIf you need help reply with any of these key phrases: \nwho am i?,\nbody language,\nopening line,\nabout,\nmovies,\npolitics,\nhobbies,\nanecdote,\nhobbies,\nanecdote,\naccessories,\ndiscussion\n\nor SOS"
         }
         else if(receivedTxt == "body language" || receivedTxt == "bodylanguage" || receivedTxt == "body"){
          messageTxt = "You are your body...\n\n" + user.bodyLang;
@@ -268,7 +268,7 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
          messageTxt = "Forgot what to say? Let me refresh your memory...\n\n" + user.discussion;
         }
         else{
-          	messageTxt = "Remember: Don't be afraid to not be yourself!\n\nIf you need help reply with any of these key phrases: who am i?, body language, opening line, about, movies, politics, hobbies, anecdote, hobbies, anecdote, accessories, discussion.";
+          	messageTxt = "Remember: Don't be afraid to not be yourself!\n\nIf you need help reply with any of these key phrases: \nwho am i?,\nbody language,\nopening line,\nabout,\nmovies,\npolitics,\nhobbies,\nanecdote,\nhobbies,\nanecdote,\naccessories,\ndiscussion\n\nor SOS";
         }
       }
       else{
