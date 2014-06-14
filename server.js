@@ -117,37 +117,47 @@ app.get('/apitest', function(req, res){
 
 app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu.herokuapp.com', protocol:'https' }), function(req, res){
  console.log("%s: %s", req.body.From, req.body.Body);
+ var messageTxt = "";
+ var receivedTxt = req.body.Body.toLowerCase();
 
- if(req.body.Body.toLowerCase() === "joke")
- {
-   reddit.r('jokes', function(err, data, res){
+ //pull up stored numbers
+ jf.readFile(file, function(err, obj) {
+   user = obj[req.body.From];
 
-    var post = Math.floor(Math.random() * 5);
-     var joke = data.data.children[post].data.title + "\n" + data.data.children[post].data.selftext;
+    if(user){
+      if( receivedTxt === "joke"){
+       reddit.r('jokes', function(err, data, res){
 
-     var messageTxt = "This one will knock 'em dead: \n\n" + joke;
-     console.log(messageTxt);
+        var post = Math.floor(Math.random() * 5);
+        var joke = data.data.children[post].data.title + "\n" + data.data.children[post].data.selftext;
 
-     client.messages.create({
-     to: req.body.From,
-     from: "+19177465463",
-     body: messageTxt,
-     }, function(err, message) {
-       console.log(message.sid);
-     });
+        messageTxt = "This one will knock 'em dead: \n\n" + joke;
+        console.log(messageTxt);
 
-   });
+       });
 
- }
- else{
-   client.messages.create({
-    	to: req.body.From,
-    	from: "+19177465463",
-    	body: "Remember: Don't be afraid to not be yourself!",
+      }
+
+      else if(receivedTxt == "body language" || receivedTxt == "bodylanguage" || receivedTxt == "body"){
+       messageTxt = "You are your body... \n\n";
+      }
+      else{
+        	messageTxt = "Remember: Don't be afraid to not be yourself!";
+      }
+    }
+    else{
+      messageTxt = "Who are you?";
+    }
+
+    client.messages.create({
+    to: req.body.From,
+    from: "+19177465463",
+    body: messageTxt,
     }, function(err, message) {
-    	console.log(message.sid);
+     console.log(message.sid);
     });
-  }
+  });
+
 });
 
 app.use(function(req, res, next){
