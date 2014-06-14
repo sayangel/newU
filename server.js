@@ -126,7 +126,8 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
    user = obj[incomingNum];
 
     if(user){
-      if( receivedTxt === "joke"){
+
+      if( receivedTxt == "joke"){
        reddit.r('jokes', function(err, data, res){
 
         var post = Math.floor(Math.random() * 5);
@@ -151,11 +152,16 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
     }
 
     client.messages.create({
-    to: req.body.From,
-    from: "+19177465463",
-    body: messageTxt,
-    }, function(err, message) {
-     console.log(message.sid);
+      to: req.body.From,
+      from: "+19177465463",
+      body: messageTxt,
+      }, function(err, message) {
+        if(!err){
+          console.log(message.sid);
+        }
+        else{
+          console.log(err);
+        }
     });
   });
 
