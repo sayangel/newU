@@ -1,5 +1,5 @@
-function getTraits() {
-  return {};
+{
+    confident:"stand up",
+    shy:"put your hands in your pockets",
+    sassy:"be saassy"
 }
-
-exports.getTraits = getTraits;

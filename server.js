@@ -1,5 +1,5 @@
 var express = require('express');
-var traits = require('./traits.js');
+var traits = require('./profile.js');
 
 var app = express();
 app.use(express.logger());
@@ -20,7 +20,8 @@ var personalities = [ 'confident',
                       'sarcastic',
                       'paranoid',
                       'german',
-                      'dead'];
+                      'dead'
+                    ];
 
 var archetypes = [    'hacker',
                       'comedian',
@@ -33,27 +34,14 @@ var archetypes = [    'hacker',
                       'brooklynite',
                       'workaholic',
                       'wizard',
-                      'dog'];
+                      'dog'
+                  ];
 
-var profile = {
-  personality:"",
-  archetype:"",
-  bodyLang:"",
-  firstLiner:"",
-  music:"",
-  movie:"",
-  politic:"",
-  hobbies:"",
-  anecdote:"",
-  clothes:"",
-  catchphrase:"",
-  discussion:"",
-  nickname:""
-};
+var profile = traits.getProfile(personalities[0], archetypes[0]);
 
 app.get('/', function(req, res) {
   //res.render('index.ejs');
-  res.send('Bob is writing content...')
+  res.send('Bob is writing content...');
 });
 
 app.use(function(req, res, next){
