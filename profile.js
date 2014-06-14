@@ -53,7 +53,7 @@ function getCatchphrase(){};
 
 function getDiscussion(archetype){};
 
-function getNickname(){}''
+function getNickname(){};
 
 
 
