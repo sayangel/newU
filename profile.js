@@ -47,7 +47,9 @@ function getHobbies(){};
 
 function getAnecdote(personality, archetype){};
 
-function getClothes(archetype){};
+function getClothes(archetype){
+  return clothes[archetype];
+};
 
 function getCatchphrase(){};
 
