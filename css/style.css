@@ -35,6 +35,12 @@ green #65E665
 }
 */
 
+.btn {
+  background-color: #f99954;
+  color: black;
+  border: black;
+}
+
 #traits .col-6 p {
   position:relative;
   left: 15px;
@@ -43,7 +49,7 @@ green #65E665
 
 #traits p {
     color: black;
-    font: lucida;
+    font: serif;
     border: 1px solid #54b4f9;
     border-radius: 7px;
     padding:6px;
