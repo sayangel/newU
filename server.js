@@ -118,7 +118,7 @@ app.get('/apitest', function(req, res){
 app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu.herokuapp.com', protocol:'https' }), function(req, res){
  console.log("%s: %s", req.body.From, req.body.Body);
 
- if(req.body.Body === "joke")
+ if(req.body.Body.toLowerCase() === "joke")
  {
    reddit.r('jokes', function(err, data, res){
 
