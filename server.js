@@ -61,20 +61,28 @@ app.get('/', function(req, res) {
 
 app.post('/', function(req, res){
 
-    console.log("Just submitted: ")
-    console.log(req.body.user.traits);
-    //console.log(req.body.user.traits);
-
-    var obj = {name: 'JP'};
+    var obj = {};
 
     jf.readFile(file, function(err, obj) {
       console.log(obj);
       phoneNum = req.body.user.phone;
-      obj[phoneNum] = JSON.parse(req.body.user.traits);
+      userTraits = JSON.parse(req.body.user.traits);
+      obj[phoneNum] = userTraits;
+
       jf.writeFile(file, obj, function(err) {
         if(!err)
         {
           res.send("Thanks for submitting!");
+          var messageTxt = "Alright, " + userTraits.nickname + ", don't be afraid to not be yourself! Open with: \n\n" + userTraits.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + userTraits.discussion + "\n\nWe're here to help if you need anything else!\n\nReply with any of these phrases for help:\nwho am i?,\nbody language,\nopening line,\nabout,\nmovies,\npolitics,\nhobbies,\nanecdote,\nhobbies,\nanecdote,\naccessories,\ndiscussion\n\nor SOS";
+          console.log(messageTxt);
+
+          client.messages.create({
+          to: phoneNum,
+          from: "+19177465463",
+          body: messageTxt,
+          }, function(err, message) {
+            console.log(message.sid);
+          });
         }
       })
     });
@@ -92,7 +100,6 @@ app.get('/apitest', function(req, res){
       }
     }
     var messageTxt = "If you don't know what to talk about, here are some topics for discussion: \n\n" + topics;
-    console.log(messageTxt);
 
     client.messages.create({
     to: "3235135285",
@@ -110,37 +117,179 @@ app.get('/apitest', function(req, res){
 
 app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu.herokuapp.com', protocol:'https' }), function(req, res){
  console.log("%s: %s", req.body.From, req.body.Body);
+ var messageTxt = "";
+ var incomingNum = req.body.From.substr(2);
+ var receivedTxt = req.body.Body.toLowerCase();
 
- if(req.body.Body === "joke")
- {
-   reddit.r('jokes', function(err, data, res){
+ //pull up stored numbers
+ jf.readFile(file, function(err, obj) {
+   user = obj[incomingNum];
 
-    var post = Math.floor(Math.random() * 5);
-     var joke = data.data.children[post].data.title + "\n" + data.data.children[post].data.selftext;
+    if( receivedTxt == "joke"){
+     reddit.r('jokes', function(err, data, res){
 
-     var messageTxt = "This one will knock 'em dead: \n\n" + joke;
-     console.log(messageTxt);
+      var post = Math.floor(Math.random() * 5);
+      var joke = data.data.children[post].data.title + "\n" + data.data.children[post].data.selftext;
 
-     client.messages.create({
-     to: "3235135285",
-     from: "+19177465463",
-     body: messageTxt,
-     }, function(err, message) {
-       console.log(message.sid);
+      messageTxt = "This one will knock 'em dead: \n\n" + joke;
+      console.log(messageTxt);
+
+      client.messages.create({
+        to: req.body.From,
+        from: "+19177465463",
+        body: messageTxt,
+        }, function(err, message) {
+          if(!err){
+            console.log(message.sid);
+          }
+          else{
+            console.log(err);
+          }
+      });
+
      });
 
-   });
+    }
 
- }
- else{
-   client.messages.create({
-    	to: "3235135285",
-    	from: "+19177465463",
-    	body: "Remember: Don't be afraid to not be yourself!",
-    }, function(err, message) {
-    	console.log(message.sid);
-    });
-  }
+    else if( receivedTxt == "help me"){
+      var responseNum = Math.floor(Math.random() * 4);
+      if(responseNum == 0){
+        reddit.r('worldnews', function(err, data, res){
+          for(var i = 0; i < 5; i++){
+            if(!data.data.children[i].data.is_self){
+              //console.log(data.data.children[i].data.title); //outputs object representing first page of WTF subreddit
+              topics += data.data.children[i].data.title + "\n\n";
+            }
+          }
+          var messageTxt = "If you don't know what to talk about, here are some topics for discussion: \n\n" + topics;
+
+          client.messages.create({
+          to: req.body.From,
+          from: "+19177465463",
+          body: messageTxt,
+          }, function(err, message) {
+            if(!err){
+              console.log(message.sid);
+            }
+            else{
+              console.log(err);
+            }
+          });
+
+        });
+      }
+      else if(responseNum == 1){
+
+        var messageTxt = "You're fucked.";
+
+        client.messages.create({
+        to: req.body.From,
+        from: "+19177465463",
+        body: messageTxt,
+        }, function(err, message) {
+          if(!err){
+            console.log(message.sid);
+          }
+          else{
+            console.log(err);
+          }
+        });
+
+      }
+      else if(responseNum == 2){
+
+        var messageTxt = "Try again later.";
+
+        client.messages.create({
+        to: req.body.From,
+        from: "+19177465463",
+        body: messageTxt,
+        }, function(err, message) {
+          if(!err){
+            console.log(message.sid);
+          }
+          else{
+            console.log(err);
+          }
+        });
+      }
+      else if(responseNum == 3){
+
+        var messageTxt = "Who is this?";
+
+        client.messages.create({
+        to: req.body.From,
+        from: "+19177465463",
+        body: messageTxt,
+        }, function(err, message) {
+          if(!err){
+            console.log(message.sid);
+          }
+          else{
+            console.log(err);
+          }
+        });
+
+      };
+    }
+
+    else
+    {
+      if(user){
+
+        if(receivedTxt == "who am i?" || receivedTxt == "who am i"){
+          messageTxt = "Remember, " + user.nickname + ", don't be afraid to not be yourself! You are a "+ user.personality + " " + user.archetype + "!\n\nOpen with: \n\n" + user.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + user.discussion + "\n\nWe're here to help if you need anything else!\n\nIf you need help reply with any of these key phrases: \nwho am i?,\nbody language,\nopening line,\nabout,\nmovies,\npolitics,\nhobbies,\nanecdote,\nhobbies,\nanecdote,\naccessories,\ndiscussion\n\nor SOS"
+        }
+        else if(receivedTxt == "body language" || receivedTxt == "bodylanguage" || receivedTxt == "body"){
+         messageTxt = "You are your body...\n\n" + user.bodyLang;
+        }
+        else if(receivedTxt == "open" || receivedTxt == "opening line" || receivedTxt == "opener"){
+         messageTxt = "Hit 'em with this...\n\n" + user.firstLiner;
+        }
+        else if(receivedTxt == "about" || receivedTxt == "about me"){
+         messageTxt = "This will get their attention...\n\n" + user.music;
+        }
+        else if(receivedTxt == "movie" || receivedTxt == "movies"){
+         messageTxt = "Hit 'em with this...\n\n" + user.movies.list + "\n\n" + user.movies.action;
+        }
+        else if(receivedTxt == "politics"){
+         messageTxt = "Talking about politics? Say this...\n\n" + user.politics;
+        }
+        else if(receivedTxt == "hobbies"){
+         messageTxt = "Here's what you do for 'fun'...\n\n" + user.hobbies;
+        }
+        else if(receivedTxt == "anecdote"){
+         messageTxt = "Story time, baby...\n\n" + user.anecdote;
+        }
+        else if(receivedTxt == "accessories"){
+         messageTxt = "Dress for success...\n\n" + user.clothes;
+        }
+        else if(receivedTxt == "discussion" ){
+         messageTxt = "Forgot what to say? Let me refresh your memory...\n\n" + user.discussion;
+        }
+        else{
+          	messageTxt = "Remember: Don't be afraid to not be yourself!\n\nIf you need help reply with any of these key phrases: \nwho am i?,\nbody language,\nopening line,\nabout,\nmovies,\npolitics,\nhobbies,\nanecdote,\nhobbies,\nanecdote,\naccessories,\ndiscussion\n\nor SOS";
+        }
+      }
+      else{
+        messageTxt = "Who are you?";
+      }
+
+      client.messages.create({
+        to: req.body.From,
+        from: "+19177465463",
+        body: messageTxt,
+        }, function(err, message) {
+          if(!err){
+            console.log(message.sid);
+          }
+          else{
+            console.log(err);
+          }
+      });
+    };
+  });
+
 });
 
 app.use(function(req, res, next){
