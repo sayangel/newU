@@ -73,7 +73,7 @@ app.post('/', function(req, res){
         if(!err)
         {
           res.send("Thanks for submitting!");
-          var messageTxt = "Alright, " + userTraits.nickname + ", don't be afraid to not be yourself! Open with: \n\n" + userTraits.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + userTraits.discussion + "\n\nWe're here to help if you need anything else!";
+          var messageTxt = "Alright, " + userTraits.nickname + ", don't be afraid to not be yourself! Open with: \n\n" + userTraits.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + userTraits.discussion + "\n\nWe're here to help if you need anything else!\n\nReply with any of these phrases for help:\nwho am i?,\nbody language,\nopening line,\nabout,\nmovies,\npolitics,\nhobbies,\nanecdote,\nhobbies,\nanecdote,\naccessories,\ndiscussion\n\nor SOS";
           console.log(messageTxt);
 
           client.messages.create({
