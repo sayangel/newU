@@ -13,6 +13,8 @@ footer {
   padding: 30px 0;
 }
 
+input.hidden { display: none; }
+
 /*
  * Off Canvas
  * --------------------------------------------------

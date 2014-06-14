@@ -1,4 +1,22 @@
 {
-  "1234567": "test",
+  "325234": {
+    "personality": "sensitive",
+    "archetype": "workaholic",
+    "bodyLang": "Make sincere eye contact and loosen your tear ducts. Be ready to tear up at any sad anecdote.\nListen much more than you speak. If you speak, use your words to ask follow-up questions and encourage others to delve into their issues more.\nDo not slouch and remain in relatively close, non-creepy proximity with whomever you’re speaking.\nKeep your hands out of your pockets so you’re ready to cover your mouth during moments of “Oh no he/she did not! That is just awful!”\nWalk with purpose from one emotional moment to the next. Seek out emotional conversations to which you can react. Be able to sniff out the gloom in the venue.",
+    "firstLiner": "I want you to play me like one of your French horns.",
+    "music": "Back at my place, I have stacks of paperwork that I have to get through right the fuck now. But I’m sorry for rambling on, let’s get back to you.",
+    "movies": {
+      "list": "Bloomberg TV, Videotapes of own previous mistakes, Job Orientation/Training videos, Military History",
+      "action": "Describe just how much each of them makes you cry your eyes out, then start crying."
+    },
+    "politics": "The only political issue I’m caught up on right now is the legal state of overtime pay. The situation is just awful! I feel bad for all those poor people who need help.",
+    "hobbies": "Ping Pong, Skee-Ball, Writing Poetry about Birds, Barbecuing Pork Ribs and Pork Chops, and Growing Bonsai Trees",
+    "anecdote": "I accomplished a pretty massive goal last month. In the midst of studying for my third graduate degree, I did all of my work at my job for the next four years. In theory, I could just come into the office for the next four years and do absolutely nothing because it’s all done, but I’m not that kind of person. I’m going to keep getting ahead. I’m going to climb to the top and never stop. And once I hit the top? Well once I hit the top I’m gonna grow some fucking wings and take off. So what if most people are out having fun? I’m 23, it’s time to buckle down and focus on my future. I have future grandchildren to think about. I can rest and sleep when I’m dead. So what if my doctor told me I couldn’t keep surviving on three hours of sleep per night?  Why aren’t you listening? I’m baring my soul here and you’re not even paying attention. I’m gonna cry so hard.",
+    "clothes": "A loosened tie and messy collar",
+    "catchphrase": "Hey I’m just here to have a good time.",
+    "discussion": "Do you think the federal government should be able to legally cap the number of hours someone can work?",
+    "nickname": "Snoop Froggy Frog",
+    "image": "workaholic.jpg"
+  },
   "name": "JP"
 }

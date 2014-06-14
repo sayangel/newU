@@ -55,6 +55,18 @@
                 <img src="/images/<%= data.image%>" style="border-radius: 150px;width: 250px; height: 250px"></img>
               </div>
             </div>
+            <div class="row">
+              <div class = "col-4 col-lg-4">
+                <button class="btn btn-default">This sucks more than the current me.</button>
+              </div>
+              <div class = "col-4 col-lg-4">
+                <form method="post" action="/">
+                    <input type="text" name="user[phone]" placeholder="Enter Phone #">
+                    <input type="hidden" name="user[traits]" value="<%= JSON.stringify(data) %>">
+                    <button type="submit" class="btn btn-default">I'm Ready</button>
+                </form>
+              </div>
+            </div>
           </div>
 
           <div class="row">

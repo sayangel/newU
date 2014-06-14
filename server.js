@@ -61,17 +61,21 @@ app.get('/', function(req, res) {
 
 app.post('/', function(req, res){
 
-    console.log(request.body.user.phone);
-    console.log(request.body.user.profile);
+    console.log("Just submitted: ")
+    console.log(req.body.user.traits);
+    //console.log(req.body.user.traits);
 
     var obj = {name: 'JP'};
 
     jf.readFile(file, function(err, obj) {
       console.log(obj);
-      name2 = "1234567";
-      obj[name2] = "test";
+      phoneNum = req.body.user.phone;
+      obj[phoneNum] = JSON.parse(req.body.user.traits);
       jf.writeFile(file, obj, function(err) {
-        console.log(err);
+        if(!err)
+        {
+          res.send("Thanks for submitting!");
+        }
       })
     });
 
