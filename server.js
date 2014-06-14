@@ -61,20 +61,28 @@ app.get('/', function(req, res) {
 
 app.post('/', function(req, res){
 
-    console.log("Just submitted: ")
-    console.log(req.body.user.traits);
-    //console.log(req.body.user.traits);
-
-    var obj = {name: 'JP'};
+    var obj = {};
 
     jf.readFile(file, function(err, obj) {
       console.log(obj);
       phoneNum = req.body.user.phone;
-      obj[phoneNum] = JSON.parse(req.body.user.traits);
+      userTraits = req.body.user.traits;
+      obj[phoneNum] = JSON.parse(userTraits);
+
       jf.writeFile(file, obj, function(err) {
         if(!err)
         {
           res.send("Thanks for submitting!");
+          var messageTxt = "Remember, " + userTraits.nickname + ", don't be afraid to not be yourself! Open with: \n\n" + userTraits.firstLiner "\n\nThen maybe start a discussion with: \n\n" + userTraits.discussion + "\n\nWe're here to help if you need anything else!";
+          console.log(messageTxt);
+
+          client.messages.create({
+          to: phoneNum,
+          from: "+19177465463",
+          body: messageTxt,
+          }, function(err, message) {
+            console.log(message.sid);
+          });
         }
       })
     });
@@ -92,7 +100,6 @@ app.get('/apitest', function(req, res){
       }
     }
     var messageTxt = "If you don't know what to talk about, here are some topics for discussion: \n\n" + topics;
-    console.log(messageTxt);
 
     client.messages.create({
     to: "3235135285",
