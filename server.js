@@ -141,7 +141,7 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
       }
 
       else if(receivedTxt == "body language" || receivedTxt == "bodylanguage" || receivedTxt == "body"){
-       messageTxt = "You are your body... \n\n";
+       messageTxt = "You are your body...\n\n" + user.bodyLang;
       }
       else{
         	messageTxt = "Remember: Don't be afraid to not be yourself!";
