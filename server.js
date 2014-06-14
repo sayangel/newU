@@ -151,7 +151,7 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
 
     }
 
-    else if( receivedTxt == "help"){
+    else if( receivedTxt == "help me"){
       var responseNum = Math.floor(Math.random() * 4);
       if(responseNum == 0){
         reddit.r('worldnews', function(err, data, res){
