@@ -139,9 +139,34 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
        });
 
       }
-
+      else if(receivedTxt == "who am i?" || receivedTxt == "who am i"){
+        messageTxt = "Remember, " + user.nickname + ", don't be afraid to not be yourself! You are a "+ user.personality + " " + user.archetype + "\n\nOpen with: \n\n" + userTraits.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + userTraits.discussion + "\n\nWe're here to help if you need anything else!"      }
       else if(receivedTxt == "body language" || receivedTxt == "bodylanguage" || receivedTxt == "body"){
        messageTxt = "You are your body...\n\n" + user.bodyLang;
+      }
+      else if(receivedTxt == "open" || receivedTxt == "opening line" || receivedTxt == "opener"){
+       messageTxt = "Hit 'em with this...\n\n" + user.firstLiner;
+      }
+      else if(receivedTxt == "about" || receivedTxt == "about me"){
+       messageTxt = "Turn down for this...\n\n" + user.music;
+      }
+      else if(receivedTxt == "movie" || receivedTxt == "movies"){
+       messageTxt = "Hit 'em with this...\n\n" + user.movies.list + "\n\n" + user.movies.action;
+      }
+      else if(receivedTxt == "politics"){
+       messageTxt = "Talking about politics? Say this...\n\n" + user.politics;
+      }
+      else if(receivedTxt == "hobbies"){
+       messageTxt = "Here's what you do for 'fun'...\n\n" + user.hobbies;
+      }
+      else if(receivedTxt == "anecdote"){
+       messageTxt = "Story time, baby...\n\n" + user.anecdote;
+      }
+      else if(receivedTxt == "clothes"){
+       messageTxt = "Dress for success...\n\n" + user.clothes;
+      }
+      else if(receivedTxt == "discussion" ){
+       messageTxt = "Forgot what to say? Let me refresh your memory...\n\n" + user.discussion;
       }
       else{
         	messageTxt = "Remember: Don't be afraid to not be yourself!";
