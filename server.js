@@ -140,7 +140,8 @@ app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu
 
       }
       else if(receivedTxt == "who am i?" || receivedTxt == "who am i"){
-        messageTxt = "Remember, " + user.nickname + ", don't be afraid to not be yourself! You are a "+ user.personality + " " + user.archetype + "\n\nOpen with: \n\n" + userTraits.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + userTraits.discussion + "\n\nWe're here to help if you need anything else!"      }
+        messageTxt = "Remember, " + user.nickname + ", don't be afraid to not be yourself! You are a "+ user.personality + " " + user.archetype + "\n\nOpen with: \n\n" + user.firstLiner + "\n\nThen maybe start a discussion with: \n\n" + user.discussion + "\n\nWe're here to help if you need anything else!"
+      }
       else if(receivedTxt == "body language" || receivedTxt == "bodylanguage" || receivedTxt == "body"){
        messageTxt = "You are your body...\n\n" + user.bodyLang;
       }
