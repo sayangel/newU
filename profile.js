@@ -2,6 +2,7 @@ var bodylang = require('./bodylanguage.json');
 var music = require('./music.json');
 var movies = require('./movies.json');
 var politics = require('./politics.json');
+var anecdote = require('./anecdote.json');
 var clothes = require('./clothes.json')
 var discussion = require('./discussion.json')
 
@@ -68,7 +69,7 @@ function getMovies(personality, archetype){
 function getPolitics(personality, archetype){
   var topic = politics.archetype[archetype];
   var action = politics.personality[personality];
-  var sentence = "The only political issue I’m caught up on right now is " + topic "." + action;
+  var sentence = "The only political issue I’m caught up on right now is " + topic + "." + action;
   return sentence;
 };
 
@@ -85,23 +86,52 @@ function getHobbies(){
                       "who invited this guy?",
                       "who invited this guy?",
                     ];
-  return movies[Math.floor(Math.random() * 10)];
+  return hobbies[Math.floor(Math.random() * 10)];
 };
 
-function getAnecdote(personality, archetype){};
+function getAnecdote(personality, archetype){
+  var anecdoteText = anecdote.archetype[archetype] + " " + anecdote.personality[personality];
+  return anecdoteText;
+};
 
 function getClothes(archetype){
   return clothes[archetype];
 };
 
-function getCatchphrase(){};
+function getCatchphrase(){
+  var catchphrases =     [
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                    ];
+  return catchphrases[Math.floor(Math.random() * 10)];
+};
 
 function getDiscussion(archetype){
   return discussion[archetype];
 };
 
-function getNickname(){};
-
-
+function getNickname(){
+  var nicknames =     [
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                      "who invited this guy?",
+                    ];
+  return nicknames[Math.floor(Math.random() * 10)];
+};
 
 exports.getProfile = getProfile;

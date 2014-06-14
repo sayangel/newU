@@ -1,0 +1,30 @@
+{
+  "personality":{
+    "confident":"stand up",
+    "shy":"put your hands in your pockets",
+    "sassy":"be saassy",
+    "mysterious":"im mysterious!",
+    "sensitive":"im sensitive!",
+    "artistic":"im artistic!",
+    "neutral":"im neutral.",
+    "optimistic":"im optimistic!",
+    "sarcastic":"im sarcastic",
+    "paranoid":"im paranoid...",
+    "german":"im german.",
+    "dead":"im dead?"
+  },
+  "archetype":{
+    "hacker":"",
+    "comedian":"",
+    "athlete":"",
+    "musician":"",
+    "student":"",
+    "socialite":"",
+    "bro":"",
+    "vegan":"",
+    "brooklynite":"",
+    "workaholic":"",
+    "wizard":"",
+    "dog":""
+  }
+}
