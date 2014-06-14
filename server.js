@@ -118,11 +118,12 @@ app.get('/apitest', function(req, res){
 app.post('/sms', twilio.webhook('fc40126ed4df188851c6061be60b110c', { host:'newu.herokuapp.com', protocol:'https' }), function(req, res){
  console.log("%s: %s", req.body.From, req.body.Body);
  var messageTxt = "";
+ var incomingNum = req.body.From.substr(2);
  var receivedTxt = req.body.Body.toLowerCase();
 
  //pull up stored numbers
  jf.readFile(file, function(err, obj) {
-   user = obj[req.body.From];
+   user = obj[incomingNum];
 
     if(user){
       if( receivedTxt === "joke"){
