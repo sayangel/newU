@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "dependencies": {
     "ejs": "1.0.0",
-    "express": "~3.4.0"
+    "express": "~3.4.0",
+    "twilio": "^1.6.0"
   }
 }

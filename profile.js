@@ -5,6 +5,7 @@ var politics = require('./politics.json');
 var anecdote = require('./anecdote.json');
 var clothes = require('./clothes.json')
 var discussion = require('./discussion.json')
+var image = require('./images.json')
 
 function getProfile(personality, archetype){
 
@@ -21,7 +22,8 @@ function getProfile(personality, archetype){
     clothes:"",
     catchphrase:"",
     discussion:"",
-    nickname:""
+    nickname:"",
+    image:""
   };
 
   profile.personality = personality;
@@ -37,6 +39,7 @@ function getProfile(personality, archetype){
   profile.catchphrase = getCatchphrase();
   profile.discussion = getDiscussion(archetype);
   profile.nickname = getNickname();
+  profile.image = getImage(archetype);
   return profile;
 };
 
@@ -170,6 +173,10 @@ function getNickname(){
                       "The Baconator"
                     ];
   return nicknames[Math.floor(Math.random() * 14)];
+};
+
+function getImage(archetype){
+  return image[archetype];
 };
 
 exports.getProfile = getProfile;

@@ -44,10 +44,17 @@
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
           <div class="jumbotron">
-            <h1><%= data.personality%> <%= data.archetype%></h1>
-            <p><strong>Nickname: </strong><%= data.nickname %></p>
-            <p><strong>Catchphrase: </strong><%= data.catchphrase %></p>
-            <p><strong>Opening Line: </strong><%= data.firstLiner %></p>
+            <div class="row">
+              <div class = "col-9 col-lg-9">
+                <h1><%= data.personality%> <%= data.archetype%></h1>
+                <p><strong>Nickname: </strong><%= data.nickname %></p>
+                <p><strong>Catchphrase: </strong><%= data.catchphrase %></p>
+                <p><strong>Opening Line: </strong><%= data.firstLiner %></p>
+              </div>
+              <div class = "col-3 col-lg-3">
+                <img src="/images/<%= data.image%>" style="border-radius: 150px;width: 250px; height: 250px"></img>
+              </div>
+            </div>
           </div>
 
           <div class="row">
