@@ -1,5 +1,5 @@
 var express = require('express');
-var mongoose = require('mongoose');
+var traits = require('./traits.js');
 
 var app = express();
 app.use(express.logger());
@@ -8,6 +8,48 @@ app.use(express.static(__dirname));
 //app.engine('html', require('ejs').renderFile);
 
 var server = require('http').Server(app);
+
+var personalities = [ 'confident',
+                      'shy',
+                      'sassy',
+                      'mysterious',
+                      'sensitive',
+                      'artistic',
+                      'neutral',
+                      'optimistic',
+                      'sarcastic',
+                      'paranoid',
+                      'german',
+                      'dead'];
+
+var archetypes = [    'hacker',
+                      'comedian',
+                      'athlete',
+                      'musician',
+                      'student',
+                      'socialite',
+                      'bro',
+                      'vegan',
+                      'brooklynite',
+                      'workaholic',
+                      'wizard',
+                      'dog'];
+
+var profile = {
+  personality:"",
+  archetype:"",
+  bodyLang:"",
+  firstLiner:"",
+  music:"",
+  movie:"",
+  politic:"",
+  hobbies:"",
+  anecdote:"",
+  clothes:"",
+  catchphrase:"",
+  discussion:"",
+  nickname:""
+};
 
 app.get('/', function(req, res) {
   //res.render('index.ejs');
