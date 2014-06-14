@@ -66,8 +66,8 @@ app.post('/', function(req, res){
     jf.readFile(file, function(err, obj) {
       console.log(obj);
       phoneNum = req.body.user.phone;
-      userTraits = req.body.user.traits;
-      obj[phoneNum] = JSON.parse(userTraits);
+      userTraits = JSON.parse(req.body.user.traits);
+      obj[phoneNum] = userTraits;
 
       jf.writeFile(file, obj, function(err) {
         if(!err)
