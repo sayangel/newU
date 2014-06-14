@@ -37,11 +37,16 @@ var archetypes = [    'hacker',
                       'dog'
                   ];
 
-var profile = traits.getProfile(personalities[0], archetypes[0]);
 
 app.get('/', function(req, res) {
   //res.render('index.ejs');
-  res.send('Bob is writing content...');
+  var num1 = Math.floor(Math.random() * 12);
+  var num2 = Math.floor(Math.random() * 12);
+  console.log("RANDOS");
+  console.log(num1);
+  console.log(num2);
+  var profile = traits.getProfile(personalities[num1], archetypes[num2]);
+  res.render('index.ejs', {data: profile});
 });
 
 app.use(function(req, res, next){
