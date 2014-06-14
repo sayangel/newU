@@ -24,11 +24,19 @@ function getProfile(personality, archetype){
     nickname:""
   };
 
-
   profile.personality = personality;
   profile.archetype = archetype;
   profile.bodyLang = getBodyLang(personality);
-  console.log(getFirstLiner());
+  profile.firstLiner = getFirstLiner();
+  profile.music = getMusic(personality, archetype);
+  profile.movies = getMovies(personality, archetype);
+  profile.politics = getPolitics(personality, archetype);
+  profile.hobbies = getHobbies();
+  profile.anecdote = getAnecdote(personality, archetype);
+  profile.clothes = getClothes(archetype);
+  profile.catchphrase = getCatchphrase();
+  profile.discussion = getDiscussion(archetype);
+  profile.nickname = getNickname();
   return profile;
 };
 
@@ -39,20 +47,24 @@ function getBodyLang(personality)
 };
 
 function getFirstLiner(){
+
   var firstLiners = [
+                      "What a night, huh?",
                       "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
-                      "who invited this guy?",
+                      "Now that’s a pretty smile!",
+                      "Somebody please talk to me, I’m lonely.",
+                      "Anybody want a high-five?",
+                      "Who knows magic? I’m so down to see a magic trick.",
+                      "I want you to play me like one of your French horns.",
+                      "Imagine a dolphin with a really deep voice named Fin Diesel.",
+                      "Jesus, take the wheel!",
+                      "Who is your favorite starter Pokemon and why is it Charmander?",
+                      "Imagine a horse race but all the horses are named Steve.",
+                      "I can dunk a basketball.",
+                      "How many pushups do you think I can do?"
                     ];
 
-  return firstLiners[Math.floor(Math.random() * 10)];
+  return firstLiners[Math.floor(Math.random() * 13)];
 
 };
 
@@ -62,7 +74,7 @@ function getMusic(personality, archetype){
 };
 
 function getMovies(personality, archetype){
-  var moviesTrait = movies.archetype[archetype] + " " + movies.personality[personality];
+  var movieTrait = movies.archetype[archetype] + " " + movies.personality[personality];
   return movieTrait;
 };
 

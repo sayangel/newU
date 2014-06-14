@@ -14,17 +14,17 @@
     "dead":"im dead?"
   },
   "archetype":{
-    "hacker":"",
-    "comedian":"",
-    "athlete":"",
-    "musician":"",
-    "student":"",
-    "socialite":"",
-    "bro":"",
-    "vegan":"",
-    "brooklynite":"",
-    "workaholic":"",
-    "wizard":"",
-    "dog":""
+    "hacker":"House of Cards, Social Network, Hackers, Silicon Valley",
+    "comedian":"Parks and Rec, Anchorman, There’s Something About Mary, Saturday Night Live",
+    "athlete":"Remember the Titans, Hoosiers, The Sandlot, Sportscenter",
+    "musician":"High Fidelity, The X Factor, Flight of the Conchords, Almost Famous",
+    "student":"Ferris Bueller's Day Off, Freaks and Geeks, Legally Blonde, Community",
+    "socialite":"The Great Gatsby, The Real Housewives of Orange County, The Simple Life, Clueless",
+    "bro":"Entourage, Old School, Fight Club, Rambo",
+    "vegan":"The Post Punk Kitchen, Food, Inc., Vegucated, Super Size Me",
+    "brooklynite":"Requiem for a Dream, Portlandia, Untitled Swedish Drama from the late-1980’s, Television Static",
+    "workaholic":"Bloomberg TV, Videotapes of own previous mistakes, Job Orientation/Training videos, Military History",
+    "wizard":"What is a movie? What is TV? I am from Middle-earth. ",
+    "dog":"WOOF WOOF WOOF WOOF WOOF WOOF"
   }
 }
